@@ -1,0 +1,38 @@
+<h1 style="text-align: center">Add any company here :</h1>
+
+<form [formGroup]="signupForm" (ngSubmit)="companySubmit(signupForm)" (ngSubmit)="onNoClick()" (ngSubmit)="openSnackBar(message='Add table row successfully', action='Done')">
+  <div class="example-container">
+
+
+   
+      <mat-form-field hintLabel="Max 5 characters">
+        <input matInput #id   formControlName="companyId" placeholder="Company Id" ngModel  maxlength="5" pattern="[0-9]{0,5}">
+        <mat-hint align="end">{{id.value?.length || 0}}/5</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field hintLabel="Max 20 characters">
+          <input matInput #input type="text" formControlName="companyName"  placeholder="Company Name" maxlength="20">
+          <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+        </mat-form-field>
+
+      <mat-form-field hintLabel="Max 20 characters">
+        <input matInput #address type="text" formControlName="companyAddress"  placeholder="Company Address" maxlength="20">
+        <mat-hint align="end">{{address.value?.length || 0}}/20</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field >
+        <input matInput  type="text" formControlName="companyImage" placeholder="Input image url">
+      </mat-form-field>
+            <!-- <div>
+               <input type="file" name="pic" formControlName="proImage" accept="image/*">
+            </div> <br> -->
+       
+        
+          <div class="example-button-row">
+          <button mat-stroked-button  color="primary" class="submit-button" type="submit"
+          [disabled]="signupForm.status !== 'VALID'">Submit</button>
+          <button mat-button mat-dialog-close>Cancel</button>
+        </div> 
+  </div>
+
+</form>

@@ -1,0 +1,14 @@
+
+<h1 style="text-align: center ;color: red;">Http api get call</h1>
+<div *ngFor='let user of users'>
+<h2>{{user.id}}-{{user.name}}</h2>
+</div>
+<div *ngFor='let key of mydata'>
+  <p>{{key.id}}--{{key.name}}--{{key.phone}}--{{key.username}}--{{key.website}}</p>
+</div>
+
+<h1 style="text-align: center ;color: red;">Google map api get call</h1>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>

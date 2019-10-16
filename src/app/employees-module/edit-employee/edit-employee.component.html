@@ -1,0 +1,53 @@
+
+<h1 style="text-align: center">Change Employee Information : </h1>
+<br>
+<form [formGroup]="signupForm" (ngSubmit)="updateEmployeeInfo(signupForm)" (ngSubmit)="onNoClick()">
+  <div class="example-container">
+
+
+   
+      <mat-form-field hintLabel="Max 5 characters">
+        <input matInput #id   formControlName="employeeId"  placeholder="Employee Id"  maxlength="5" pattern="[0-9]{0,5}" readonly>
+        <mat-hint align="end">{{id.value?.length || 0}}/5</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field hintLabel="Max 20 characters">
+          <input matInput #input type="text" formControlName="employeeName"  placeholder="Employee Name" maxlength="20">
+          <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field >
+          <input matInput type="text" placeholder="Pick Company name" aria-label="Number" formControlName="companyName" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option.companyName">
+              {{option.companyName}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      <mat-form-field hintLabel="Max 3 characters">
+        <input matInput #age formControlName="employeeAge"  placeholder="Employee Age" maxlength="3" pattern="[0-9]{0,5}">
+        <mat-hint align="end">{{age.value?.length || 0}}/3</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field hintLabel="Max 20 characters">
+        <input matInput #address type="text" formControlName="employeeAddress"  placeholder="Employee Address" maxlength="20">
+        <mat-hint align="end">{{address.value?.length || 0}}/20</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field >
+        <input matInput  type="text" formControlName="employeeImage" placeholder="Input image url">
+      </mat-form-field>
+            <!-- <div>
+               <input type="file" name="pic" formControlName="proImage" accept="image/*">
+            </div> <br> -->
+       
+        
+          <div class="example-button-row">
+          <button mat-stroked-button  color="primary" class="submit-button" type="submit"
+          [disabled]="signupForm.status !== 'VALID'">Update</button>
+          <button mat-button mat-dialog-close>Cancel</button>
+        </div> 
+  </div>
+
+</form>

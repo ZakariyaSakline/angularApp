@@ -1,0 +1,67 @@
+
+  <button mat-raised-button (click)="openAddEmployeeDialog()"><i class="material-icons">person_add</i>Add Employees</button>
+  <button mat-raised-button >  <a mat-list-item [routerLink]="'./call'" routerLinkActive="active"> http call</a></button>
+
+  <mat-form-field>
+  
+    <input matInput  (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  
+  
+  <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort >
+  
+        <!-- Position Column -->
+        <ng-container matColumnDef="employeeId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><b> Employee Id </b></th>
+          <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="employeeImage">
+          <th mat-header-cell *matHeaderCellDef><b> Employee Image </b></th>
+          <td mat-cell *matCellDef="let element"><img mat-card-image src="{{element.employeeImage}}" alt="Photo of product" style="height: 80px ;width: 120px;padding: 5px"> </td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="employeeName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Employee Name </b></th>
+          <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="companyName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Company Name </b></th>
+          <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+        </ng-container>
+  
+        <!-- Weight Column -->
+        <ng-container matColumnDef="employeeAge">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Employee Age</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.employeeAge}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="employeeAddress">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Employee Address</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.employeeAddress}} </td>
+        </ng-container>
+  
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="employeeEdit">
+          <th mat-header-cell *matHeaderCellDef><b>Edit Employee</b> </th>
+          <td mat-cell *matCellDef="let element"><button mat-button (click)= "openEditEmployeeDialog(element)" > <i class="material-icons">create</i></button></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="employeeDelete">
+          <th mat-header-cell *matHeaderCellDef><b> Delete Employee </b></th>
+          <td mat-cell *matCellDef="let element"><button mat-button (click)="confirmDeleteEmployee(element)"><i class="material-icons">delete_sweep</i></button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  <router-outlet></router-outlet>
+     
